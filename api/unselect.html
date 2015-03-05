@@ -75,9 +75,12 @@
   
 
 <div class="col-lg-10">
-  <h2 id="-select-opt-">.select( opt )</h2>
-<p>Selects chart markers based on &quot;hover&quot; style definition.</p>
-<p><code>chart.select({key:&quot;Attribute Name&quot;, value: &quot;value&quot;});</code></p>
+  <h2 id="-clearselection-opt-">.clearSelection( opt )</h2>
+<p>Clears specified chart marker selection or all selections if no options passed.</p>
+<p>Clear single selection: 
+<code>chart.clearSelection({key:&quot;Attribute Name&quot;, value: &quot;value&quot;});</code></p>
+<p>Clear all selections: 
+<code>chart.clearSelection({});</code></p>
 <h4 id="arguments">Arguments</h4>
 <table>
 <thead>
@@ -231,7 +234,7 @@
 
 &lt;/script&gt;</code></pre>
 
-  <p><a href="http://github.com/esridc/cedar/edit/master/site/source/pages/api/select.hbs">Edit this page on GitHub</a></p>
+  <p><a href="http://github.com/esridc/cedar/edit/master/site/source/pages/api/unselect.hbs">Edit this page on GitHub</a></p>
 </div>
 
 <div class="col-lg-2">
@@ -252,7 +255,7 @@
     <li><a href="../api/on.html">.on( evt, fn )</a></li>
     <li><a href="../api/off.html">.off( evt )</a></li>
     <li><a href="../api/select.html">.select( opt )</a></li>
-    <li><a href="../api/clearselection.html">.clearSelection( opt )</a></li>
+    <li><a href="../api/clearSelection.html">.clearSelection( opt )</a></li>
   </ul>
 
   <h5>Json Objects</h5>

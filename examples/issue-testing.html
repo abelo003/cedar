@@ -8,7 +8,7 @@
   <meta charset="utf-8">
 
   
-    <title>Time Example | Esri Cedar</title>
+    <title>Esri Cedar</title>
   
 
   
@@ -79,34 +79,43 @@
 <div class="col-lg-10">
   
 
-
-<h1>Time Example</h1>
-
-<div id="chart"></div>
-
+<div class="row">
+  <div class="col-lg-8" >
+    <h3>Testing Issues</h3>
+    <div id="chart"></div>
+  </div>
+</div>
 
 <script>
   
-  var chart = new Cedar({"specification":"../data/templates/time.json"});
+  var chart = new Cedar({"specification":"../data/templates/test-scatter.json"});
 
   var dataset = {
-    "url":"http://services.arcgis.com/bkrWlSKcjUDFDtgw/arcgis/rest/services/It's_a_Tornado_Map/FeatureServer/0",
-    "mappings":{
-      "time": {"field":"Date"},
-      "value": {"field":"Injuries"},
-      "sort":"Date"
-
+      "url":"http://services.arcgis.com/pmcEyn9tLWCoX7Dm/arcgis/rest/services/CA_Hospitals/FeatureServer/0",
+      "query":{},
+      "mappings":{
+        "x": {"field":"Mortality_Readm_Rate","label":"Mortality"},
+        "y": {"field":"Number_of_Patients","label":"# Patients"},
+        "color":{"field":"Mortality_Readm_Rate","label":"Mortality"}
+      }
     }
-  };
+
+  //assign to the chart
   chart.dataset = dataset;
-  //chart.dataset.mappings.sort = "DATE";
+
+  //show the chart
   chart.show({
-    elementId: "#chart",
-  });  
+    elementId: "#chart"
+  });
+
+  //chart.override = {
+  //  "height": 280,
+  //  "width": 445
+  //}
 
 </script>
   <div class="wrap">
-    <p><a href="http://github.com/esridc/cedar/edit/master/site/source/pages/examples/time.hbs">Edit this sample on GitHub</a></p>
+    <p><a href="http://github.com/esridc/cedar/edit/master/site/source/pages/examples/issue-testing.hbs">Edit this sample on GitHub</a></p>
   </div>
 </div>
 
