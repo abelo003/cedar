@@ -83,12 +83,15 @@
   <div class="col-lg-8" >
     <h3>Testing Issues</h3>
     <div id="chart"></div>
+
+    <h3>Testing Issues</h3>
+    <div id="chart-bar"></div>
   </div>
 </div>
 
 <script>
   
-  var chart = new Cedar({"specification":"../data/templates/test-scatter.json"});
+  var chart = new Cedar({"specification":"../data/templates/scatter.json"});
 
   var dataset = {
       "url":"http://services.arcgis.com/pmcEyn9tLWCoX7Dm/arcgis/rest/services/CA_Hospitals/FeatureServer/0",
@@ -108,10 +111,49 @@
     elementId: "#chart"
   });
 
-  //chart.override = {
-  //  "height": 280,
-  //  "width": 445
-  //}
+  window.chart = chart;
+
+  setTimeout(function() {
+    chart.update();
+  },4000);
+
+  chart.on('update-start', function() {
+    console.log('update start!');
+  });
+
+  chart.on('update-end', function() {
+    console.log('update end!');
+  });  
+
+
+
+
+  //create a cedar chart, passing a url to a spec
+  var barChart = new Cedar({"specification":"../data/templates/bar.json"});
+  //create the dataset w/ mappings
+  var dataset = {
+    "url":"http://services.arcgis.com/pmcEyn9tLWCoX7Dm/arcgis/rest/services/CA_Hospitals/FeatureServer/0",
+    "mappings":{
+      "group": { "field": "Hospital_Ownership", "label": "Hospital Owndership" },
+      "count": { "field": "Number_of_Patients" }
+    }
+  };
+
+  //assign to the chart
+  barChart.dataset = dataset;
+
+  //show the chart
+  barChart.show({
+    elementId: "#chart-bar"
+  });
+
+  barChart.override = {
+    "axes": [
+      {
+        "titleOffset": 100
+      }
+    ]
+  };
 
 </script>
   <div class="wrap">
@@ -140,8 +182,8 @@
     <ul>
       <li><a href="../examples/bar-spec-url.html">Specification URL</a></li>
       <li><a href="../examples/bar-spec-inlined.html">Inline Specification</a></li>
-      <li><a href="../examples/bar-spec-override.html">Style Overrides</a></li>
       <li><a href="../examples/bar-spec-defaults.html">Defaults</a></li>
+      <li><a href="../examples/style-overrides.html">Style Overrides</a></li>
     </ul>
   </nav>
 
